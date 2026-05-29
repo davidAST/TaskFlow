@@ -1,8 +1,10 @@
 package com.taskflow.task.service.impl;
 
 import com.taskflow.task.domain.CreateTaskRequest;
+import com.taskflow.task.domain.UpdateTaskRequest;
 import com.taskflow.task.domain.entity.Task;
 import com.taskflow.task.domain.entity.TaskStatus;
+import com.taskflow.task.exception.TaskNotFoundException;
 import com.taskflow.task.repository.TaskRepository;
 import com.taskflow.task.service.TaskService;
 import org.springframework.data.domain.Sort;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -41,6 +44,21 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> listTasks() {
         return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "created"));
+    }
+
+    @Override
+    public Task updateTask(UUID taskId, UpdateTaskRequest request) {
+        Task task = taskRepository.findById(taskId).
+                orElseThrow(() -> new TaskNotFoundException(taskId));
+
+        task.setTitle(request.title());
+        task.setDescription(request.description());
+        task.setDueDate(request.dueDate());
+        task.setStatus(request.status());
+        task.setPriority(request.priority());
+        task.setUpdated(Instant.now());
+
+        return taskRepository.save(task);
     }
 
 
