@@ -1,6 +1,7 @@
 package com.taskflow.task.mapper.impl;
 
 import com.taskflow.task.domain.CreateTaskRequest;
+import com.taskflow.task.domain.dto.CreateTaskRequestDto;
 import com.taskflow.task.domain.dto.TaskDto;
 import com.taskflow.task.domain.entity.Task;
 import com.taskflow.task.mapper.TaskMapper;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class TaskMapperImpl implements TaskMapper {
 
     @Override
-    public CreateTaskRequest fromDto(CreateTaskRequest dto) {
+    public CreateTaskRequest fromDto(CreateTaskRequestDto dto) {
         return new CreateTaskRequest(
                 dto.title(),
                 dto.description(),
