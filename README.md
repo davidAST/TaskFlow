@@ -54,9 +54,10 @@ https://github.com/user-attachments/assets/f476acac-f3f9-4786-b060-a6cd0b853583
 ## Tutorial
 
 This project was built by following the tutorial by **Devtiro** on YouTube:
-All credit for the course structure and guidance goes to the original creator.
 
 [![Build a Task App with Spring Boot](https://img.youtube.com/vi/M2U4_t_PSRM/maxresdefault.jpg)](https://www.youtube.com/watch?v=M2U4_t_PSRM)
+
+> All credit for the course structure and guidance goes to the original creator.
 
 ---
 
